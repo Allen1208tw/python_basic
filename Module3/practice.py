@@ -4,12 +4,17 @@
 # 數字太大 要提示「請輸入更小的數字」
 # 數字太小 要提示「請輸入更大的數字」
 # 使用者猜對要回傳「恭喜中獎」
+#報錯時 請輸入數字
 
 import random
 answer = random.randint(1,100)
 num = 1
 while True:
-    user_input = int(input("輸入1-100之間的數\n" ))
+    try:
+        user_input = int(input("輸入1-100之間的數\n" ))
+    except ValueError:
+        print("請輸入數字")
+        continue
     if user_input >100 or user_input < 1:
         print("超出範圍")
     elif user_input < answer:
@@ -20,6 +25,8 @@ while True:
         num +=1
     else:
         print("答對!，總共猜了:", num, "次")
+        break
+
 
 
 
